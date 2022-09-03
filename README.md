@@ -1,9 +1,18 @@
 # Google Foobar
 
-My playground for the FooBar Challenge solutions... 
-Not necessarily are all my submissions, 
-I play with both Java and Python solutions.
+Both python and java solutions are included for some challenges, see respective
+solution comments for reasoning and other details.
 
-2022 Update:
-* No idea which levels `gearing-up-for-construction` and `power-hungry` are under
-* Added level 3 stuff
+
+**What I got**:
+
+Level 1 ~ 2
+
+* Power hungry
+* Braille translation
+* Gearing up for destruction
+
+Level 3
+
+* Queue to do
+* The grandest staircase of them all
