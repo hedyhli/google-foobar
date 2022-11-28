@@ -1,10 +1,7 @@
 # Google Foobar
 
-Both python and java solutions are included for some challenges, see respective
-solution comments for reasoning and other details.
+Solutions in mostly multiple languages for google foobar puzzles
 
-
-**What I got**:
 
 Level 1 ~ 2
 
