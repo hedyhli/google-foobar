@@ -34,23 +34,24 @@ def solution(n):
         if quotient == 1:
             # the only place where the function returns
             return power
-
     ############## use +1/-1, then try again ##############
     # this part runs either because:
     #   - n is odd, or
     #   - quotient after dividing by powers of 2 is not 1.
     #
-    # make resulting odd as close to a power of 2 as possible
+    # make resulting odd as close to a multiple of 4 as possible
     # quotient ALWAYS odd here
+    # except when quotient = 3, it's better to go <3 2 1> than <3 4 2 1>
     s += 1
     quotient -= 1
     # actually quotient += 1 (but, also +1 for -=1 outside if-block)
-    if math.log(quotient + 2, 2).is_integer():
-        # if quotient + 1 reaches a power of 2, using this over
+    # if math.log(quotient + 2, 2).is_integer():
+    if (quotient+2) % 4 == 0 and (quotient+1) != 3:
+        # if quotient + 1 reaches a multiple of 4, using this over
         # quotient-1 (which would be a normal even number), takes
         # less steps to get to 1.
         #
-        # BASICALLY: consider getting to pow2 before decrementing
+        # BASICALLY: consider getting to mult4 before decrementing
         # to an even number
         quotient += 2
     return s + solution(quotient)
