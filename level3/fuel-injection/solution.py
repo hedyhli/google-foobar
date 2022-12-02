@@ -52,7 +52,7 @@ def solution(n):
         #
         # BASICALLY: consider getting to pow2 before decrementing
         # to an even number
-        quotient += 2   
+        quotient += 2
     return s + solution(quotient)
 
 
