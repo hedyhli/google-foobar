@@ -7,7 +7,7 @@
 # [ ] calculate F
 #     [x] I
 #     [x] minus
-#     [ ] mult 
+#     [x] mult
 #     [x] inverse
 # [x] calculate FR
 # [x] common denominator
@@ -23,7 +23,7 @@ from math import gcd as f_gcd
 
 def set_terminals(m):
     """Convert row with all 0s to have corresponding cell = 1
-    
+
     > 0 2 0 3
       0 0 0 0
       1 0 0 7
@@ -51,7 +51,7 @@ def set_terminals(m):
 
 def reorder(m, order):
     """Put absorbing matrices first
-    
+
     >    s0 s1 s2 s3
       s0 0  2  0  3
       s1 0  1  0  0
@@ -80,7 +80,7 @@ def reorder(m, order):
 
 def normalize(m, nonterms):
     """Only act on non-terminals
-    
+
     Make everything a fractions.Fraction object
 
     >    s1 s3 s0 s2
@@ -314,5 +314,5 @@ def solution(m):
 
 
 if __name__ == '__main__':
-    m = [[0, 2, 1, 0, 0], [0, 0, 0, 3, 4], [0, 0, 0, 0, 0], [0, 0, 0, 0,0], [0, 0, 0, 0, 0]]
+    m = [[0, 2, 1, 0, 0], [0, 0, 0, 3, 4], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
     print(solution(m))

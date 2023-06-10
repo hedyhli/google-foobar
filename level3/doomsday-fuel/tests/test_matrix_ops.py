@@ -4,12 +4,12 @@ import solution as mod  # lol nice name huh
 import matrix as matr
 
 
-def test_mult(random_matrix):
+def test_mult(random_matrix, matrix_equal):
     for di in range(2, 10):
         m = random_matrix(di, 0, 10)
         prod = mod._mult(m, m)
         prod2 = matr.matrix_multiply(m, m)
-        assert matr.check_matrix_equality(prod, prod2)
+        assert matrix_equal(prod, prod2)
 
 
 @pytest.mark.parametrize("m", [
@@ -27,8 +27,8 @@ def test_mult(random_matrix):
         [1, 3, 5],
     ],
 ])
-def test_inv(m):
+def test_inv(m, matrix_equal):
     print(m)
     res = mod._inv(m)
     res2 = matr.invert_matrix(m)
-    assert matr.check_matrix_equality(res, res2)
+    assert matrix_equal(res, res2)
