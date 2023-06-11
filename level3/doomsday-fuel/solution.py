@@ -125,7 +125,7 @@ def get_RQ(m, terms):
     # . . x x x
     for i in range(start_at, len(m)):
         row = []
-        for j in range(start_at, len(m)):
+        for j in range(start_at, len(m[0])):
             row.append(m[i][j])
         Q.append(row)
 

@@ -39,10 +39,10 @@ def test_terminals_preset(mtest, mresult, terms, nonterms, matrix_equal):
     assert test_nonterms == nonterms
 
 
-def test_terminals_random(random_matrix, matrix_equal):
+def test_terminals_random(random_square_matrix, matrix_equal):
     """Test set_terminals with random matrices as input"""
     for di in range(2, 11):  # Test one matrix for every dimension 2 to 10
-        mtest = random_matrix(di, 0, 10)
+        mtest = random_square_matrix(di, 0, 10)
         terms = set()  # List of rows that are terminals
 
         # Random total number of terminal rows
@@ -93,9 +93,9 @@ def test_reorder_preset(mtest, order, new_m, matrix_equal):
     assert matrix_equal(mtest, new_m)
 
 
-def test_reorder_random(random_matrix, matrix_equal):
+def test_reorder_random(random_square_matrix, matrix_equal):
     for di in range(2, 11):
-        mtest = random_matrix(di, 0, 10)
+        mtest = random_square_matrix(di, 0, 10)
         order = list(range(di))
         random.shuffle(order)
 
@@ -111,24 +111,24 @@ def test_reorder_random(random_matrix, matrix_equal):
             i += 1
 
 
-def test_normalize(random_matrix, matrix_equal):
+def test_normalize(random_square_matrix, matrix_equal):
     for di in range(2, 11):
-        mtest = random_matrix(di, 0, 10)
+        mtest = random_square_matrix(di, 0, 10)
         # Make it act on all rows since the check passes for terminals too.
         new_m = sol.normalize(mtest, list(range(di)))
         for row in new_m:
             assert sum(row) == 1
 
 
-def test_RQ(random_matrix, matrix_equal):
+def test_RQ_square(random_square_matrix, matrix_equal):
     for di in range(2, 11):
-        mtest = random_matrix(di, 0, 10)
+        mtest = random_square_matrix(di, 0, 10)
         # di-2 so terms is not ALL rows
         l = random.randint(0, di-2)
         R, Q = sol.get_RQ(mtest, list(range(l)))
 
         i = 0
-        for row in range(di-l, di):
+        for row in range(l, di):
             j = 0
             for col in range(l):
                 # Test R (left)
@@ -142,4 +142,28 @@ def test_RQ(random_matrix, matrix_equal):
                 j += 1
 
             i += 1
-    # FIXME
+
+
+def test_RQ(random_matrix, matrix_equal):
+    """Test get_RQ with non-square matrices"""
+    for rows in range(2, 11):
+        for cols in range(2, 11):
+            mtest = random_matrix(rows, cols, 0, 10)
+            l = random.randint(0, min(rows, cols)-2)
+            R, Q = sol.get_RQ(mtest, list(range(l)))
+
+            i = 0
+            for row in range(l, rows):
+                j = 0
+                for col in range(l):
+                    # Test R (left)
+                    assert mtest[row][col] == R[i][j]
+                    j += 1
+
+                j = 0
+                for col in range(l, cols):
+                    # Test Q (right)
+                    assert mtest[row][col] == Q[i][j]
+                    j += 1
+
+                i += 1

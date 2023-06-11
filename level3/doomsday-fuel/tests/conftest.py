@@ -4,7 +4,7 @@ import typing as T
 import pytest
 
 
-def _random_matrix(di, min, max):
+def _random_square_matrix(di, min, max):
     m = []
     for _ in range(di):
         m.append([])
@@ -12,7 +12,15 @@ def _random_matrix(di, min, max):
             m[-1].append(randint(min, max))
     return m
 
-# TODO: define own helper funcs in matrix.py
+
+def _random_matrix(rows, cols, min, max):
+    m = []
+    for _ in range(rows):
+        m.append([])
+        for _ in range(cols):
+            m[-1].append(randint(min, max))
+    return m
+
 
 def _matrix_equal(m1, m2, roundto: T.Optional[int] = None):
     if len(m1) != len(m2):
@@ -30,6 +38,10 @@ def _matrix_equal(m1, m2, roundto: T.Optional[int] = None):
 
     return True
 
+
+@pytest.fixture
+def random_square_matrix():
+    return _random_square_matrix
 
 @pytest.fixture
 def random_matrix():
