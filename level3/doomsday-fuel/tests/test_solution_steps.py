@@ -5,6 +5,14 @@ import pytest
 import solution as sol
 import matrix as matr
 
+
+# Functions not tested:
+# - calc_F, calc_FR
+# - minus
+# - final result
+# - gcd
+
+
 @pytest.mark.parametrize("mtest,mresult,terms,nonterms", [
     (
         [[0, 2, 0, 3],
@@ -167,3 +175,17 @@ def test_RQ(random_matrix, matrix_equal):
                     j += 1
 
                 i += 1
+
+
+@pytest.mark.parametrize("mtest,expected", [
+    (
+        [[0, 2, 1, 0, 0], [0, 0, 0, 3, 4], [0, 0, 0, 0, 0], [0, 0, 0, 0,0], [0, 0, 0, 0, 0]],
+        [7, 6, 8, 21]
+    ),
+    (
+        [[0, 1, 0, 0, 0, 1], [4, 0, 0, 3, 2, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]],
+        [0, 3, 2, 9, 14],
+    ),
+])
+def test_cases(mtest, expected):
+    assert sol.solution(mtest) == expected

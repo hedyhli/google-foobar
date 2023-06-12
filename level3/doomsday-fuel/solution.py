@@ -241,6 +241,28 @@ def _mult(m, n):
     return product
 
 
+def _det(m) -> int:
+    """Get determinant of matrix"""
+    if len(m) <= 0 or len(m[0]) != len(m):
+        raise ValueError("Cannot find determinant of non-square matrix.")
+
+    # use ad-cb for 2-by-2 matrix
+    if len(m) == 2:
+        return m[0][0]*m[1][1] - m[0][1]*m[1][0]
+
+    sign = -1
+    det = 0
+    for i in range(len(m)):
+        sign *= -1
+        M = [ row[:i] + row[i+1:] for row in m[1:] ]
+        M_det = _det(M)
+
+        det += sign * M_det * m[0][i]
+
+    return det
+
+
+
 def _copy(m):
     rows = len(m)
     cols = len(m[0])
