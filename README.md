@@ -13,3 +13,7 @@ Level 3
 
 * Queue to do
 * The grandest staircase of them all
+
+Additional:
+* Fuel injection perfection
+* Doomsday fuel

@@ -1,0 +1,4 @@
+# Google Foobar's env is actually python 2 with a restricted standard library, plus apparently numpy?
+
+# This is for testing and development only.
+pytest
