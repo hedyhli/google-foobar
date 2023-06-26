@@ -9,35 +9,25 @@
 
 class Solution {
   public static void main(String[] args) {
-    System.out.println(solution(200));
+    System.out.println(solution(Integer.valueOf(args[0])));
   }
 
   public static int solution(int n) {
-    int[] result = s(n, 1, 1, 0);
-    return result[0];
+    int result = s(n, 1, 1, 0);
+    return result;
   }
 
-  public static int[] s(int n, int t, int start, int w) {
-    int[] ret = new int[2];
+  public static int s(int n, int t, int start, int w) {
     if (start >= n || n-t <= 0 || n-t <= start) {
-      t = t - start;
-      ret[0] = w;
-      ret[1] = start;
-      return ret;
+        return w;
     }
 
     w++;
     int newstart = start + 1;
     t = t + newstart;
-    int[] result = s(n, t, newstart, w);
-    w = result[0];
-    int oldstart = result[1];
-
-    if (oldstart != 0) {
-      t = t - start;
-      start++;
-      return s(n, t, start, w);
-    }
-    return ret;
+    int w2 = s(n, t, newstart, w);
+    t = t - start;
+    start = start + 1;
+    return s(n, t, start, w2);
   }
 }

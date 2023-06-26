@@ -16,12 +16,10 @@ def ss6(n, t, start, w):
         return w
 
     w += 1
-    newstart = start + 1
-    t += newstart
-    w2 = ss6(n, t, newstart, w)
-    t -= start
+    w = ss6(n, t+start+1, start+1, w)
+    t += 1
     start += 1
-    return ss6(n, t, start, w2)
+    return ss6(n, t, start, w)
 
 
 if __name__ == '__main__':
