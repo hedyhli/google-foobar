@@ -1,8 +1,5 @@
-# THE GRANDEST STAIRCASE OF THEM ALL
-#
-# Build the stairs from *bottom* to *top* ;P
-
-# Works, but n=199 and n=200 takes four minutes!
+# Old unrefactored solution, used for ensuring solution.py results are still
+# consistent.
 
 import sys
 

@@ -1,1 +1,2 @@
 Completed in: 2 days, 1 hr, 23 mins, 3 secs.
+2023-09-26: Had an idea for a faster implementation, unfinished.
