@@ -1,26 +1,25 @@
-# THE GRANDEST STAIRCASE OF THEM ALL
-#
-# Build the stairs from *bottom* to *top* ;P
-
-# Works, but n=199 and n=200 takes four minutes!
-
-import sys
-
-
-def solution(n):
-    w = ss6(n, 1, 1, 0)
-    return w
-
-def ss6(n, t, start, w):
-    if start >= n or n-t <= 0 or n-t <= start:
+def solution(n, t=1, s=1, w=0):
+    if s >= n or n-t <= s:
         return w
 
-    w += 1
-    w = ss6(n, t+start+1, start+1, w)
-    t += 1
-    start += 1
-    return ss6(n, t, start, w)
+    w = solution(n, t+s+1, s+1, w+1)
+    return solution(n, t+1, s+1, w)
 
+
+## THE GRANDEST STAIRCASE OF THEM ALL ##
+#
+# Build the stairs from *bottom* to *top*.
+#
+# Works, but n=199 and n=200 takes four minutes!
+#
+# Solution function can easily be a one liner lmao.
+# Amazing for golfing.
+#
+# t=test, s=start, w = starcase "ways" accumulation for the solution(n)
 
 if __name__ == '__main__':
+    import sys
+    if len(sys.argv) < 2:
+        print("Please provide an integer argument n for solution(n)")
+        exit(1)
     print(solution(int(sys.argv[1])))
